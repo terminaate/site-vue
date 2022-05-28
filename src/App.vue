@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <LoaderScreen @ended="loaderScreenEnded = true" :player="player"/>
+    <MainScreen @player-ready="player = $event" :loader-screen-ended="loaderScreenEnded"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LoaderScreen from "./screens/LoaderScreen.vue";
+import MainScreen from "./screens/MainScreen.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "app",
+  components: {MainScreen, LoaderScreen},
+  data() {
+    return {
+      player: null,
+      loaderScreenEnded: false
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
