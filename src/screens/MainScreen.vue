@@ -1,10 +1,16 @@
 <template>
   <div class="screen__main">
     <div class="foreground">
+      <div :visible="aboutMeCard" class="aboutme_card">
+        error: 404 user not found
+        <button @click="aboutMeCard = false" class="aboutme_button">
+          <img src="../assets/icons/left.svg" alt="">
+        </button>
+      </div>
       <div class="center_text">
         <span class="logo_text">Termina<span>a</span>te</span>
         <span class="desc_text">what are you doing here?</span>
-        <span class="aboutme_link">about me</span>
+        <span @click="aboutMeCard = true" class="aboutme_link">about me</span>
       </div>
       <div class="social_links">
         <a href="https://github.com/terminaate" rel="noreferrer" target="_blank" class="github_link">
@@ -38,7 +44,8 @@ export default {
   },
   data() {
     return {
-      player: null
+      player: null,
+      aboutMeCard: false
     }
   },
   methods: {
@@ -87,14 +94,14 @@ export default {
 }
 
 
-.aboutMeCard {
+.aboutme_card {
   position: absolute;
   height: 60%;
   width: 50%;
   min-width: 300px;
   border-radius: 13px;
   background-color: var(--background-primary);
-  transform: translateX(200%);
+  transform: translateX(350%);
   transition: 1s;
   padding: 20px;
   display: flex;
@@ -103,16 +110,19 @@ export default {
   flex-direction: column;
 }
 
-.aboutMeCard[data-visible="true"] {
+.aboutme_card[visible="true"] {
   transform: translateX(0);
 }
 
-.backButton {
+.aboutme_button {
   position: absolute;
   bottom: 20px;
   font-size: 30px;
   text-decoration: overline;
   cursor: pointer;
+  background: none;
+  border: none;
+  height: max-content;
 }
 
 .center_text {
@@ -125,8 +135,8 @@ export default {
   transition: 1s;
 }
 
-.aboutMeCard[data-visible="true"] + .center_text {
-  transform: translateX(-100vw);
+.aboutme_card[visible="true"] + .center_text {
+  transform: translateX(-350%);
 }
 
 

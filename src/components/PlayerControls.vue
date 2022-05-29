@@ -52,7 +52,7 @@ export default {
 
 .line {
   height: 1rem;
-  width: 2px;
+  width: 1.7px;
   margin-inline: 0.1rem;
   /*margin: 0 0.1rem;*/
   background: white;
